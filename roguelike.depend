@@ -1,0 +1,53 @@
+# depslib dependency file v1.0
+1554820415 source:c:\users\ian\desktop\roguelike\roguelike\main.c
+	<curses.h>
+	<stdlib.h>
+	<stdio.h>
+	<stdbool.h>
+	<string.h>
+	"init.h"
+	"stage.h"
+
+1549107440 c:\users\ian\desktop\roguelike\pdcurses-3.8\\curses.h
+	<stdarg.h>
+	<stddef.h>
+	<stdio.h>
+	<wchar.h>
+	<stdbool.h>
+
+1554820410 c:\users\ian\desktop\roguelike\roguelike\init.h
+	<stdbool.h>
+
+1554821828 source:c:\users\ian\desktop\roguelike\roguelike\init.c
+	"init.h"
+	<curses.h>
+	<string.h>
+	<time.h>
+	<stdbool.h>
+
+1554820350 c:\users\ian\desktop\roguelike\roguelike\stage.h
+	"init.h"
+
+1554823795 source:c:\users\ian\desktop\roguelike\roguelike\stage.c
+	"stage.h"
+	"nextLevel.h"
+	<panel.h>
+	<string.h>
+
+1549107440 c:\users\ian\desktop\roguelike\pdcurses-3.8\\panel.h
+	<curses.h>
+
+1552631731 c:\users\ian\desktop\roguelike\roguelike\nextlevel.h
+	"init.h"
+
+1552665387 source:c:\users\ian\desktop\roguelike\roguelike\nextlevel.c
+	<stdbool.h>
+	"nextLevel.h"
+
+1554704937 c:\users\ian\desktop\roguelike\roguelike\lobby.h
+
+1554704937 source:c:\users\ian\desktop\roguelike\roguelike\lobby.c
+	"lobby.h"
+	"init.h"
+	<panel.h>
+
