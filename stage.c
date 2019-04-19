@@ -2,6 +2,7 @@
 #include "nextLevel.h"
 #include <panel.h>
 #include <string.h>
+#include "nameGenerator.h"
 
 void set_map(){
     int row;
@@ -279,8 +280,10 @@ Player set_enemy() {
     Player enemy;
     int col;
     int row;
-    char name[] = "Zlo";
-    strcpy(enemy.name, name);
+    generateName(&(enemy.name));
+    //char name[] = "Zlo";
+    //strcpy(enemy.name, name);
+
     getmaxyx(stdscr, row, col);
     /*
     enemy.str = 1 + rand()%10;

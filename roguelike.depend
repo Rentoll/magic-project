@@ -51,3 +51,46 @@
 	"init.h"
 	<panel.h>
 
+1554821828 source:d:\github\project wizard\project-wizard\init.c
+	"init.h"
+	<curses.h>
+	<string.h>
+	<time.h>
+	<stdbool.h>
+
+1554820410 d:\github\project wizard\project-wizard\init.h
+	<stdbool.h>
+
+1554820415 source:d:\github\project wizard\project-wizard\main.c
+	<curses.h>
+	<stdlib.h>
+	<stdio.h>
+	<stdbool.h>
+	<string.h>
+	"init.h"
+	"stage.h"
+
+1554820350 d:\github\project wizard\project-wizard\stage.h
+	"init.h"
+
+1552665387 source:d:\github\project wizard\project-wizard\nextlevel.c
+	<stdbool.h>
+	"nextLevel.h"
+
+1552631731 d:\github\project wizard\project-wizard\nextlevel.h
+	"init.h"
+
+1554826216 source:d:\github\project wizard\project-wizard\stage.c
+	"stage.h"
+	"nextLevel.h"
+	<panel.h>
+	<string.h>
+
+1555663371 source:d:\github\project wizard\project-wizard\namegenerator.c
+	<string.h>
+	<time.h>
+	<stdio.h>
+	"nameGenerator.h"
+
+1555663136 d:\github\project wizard\project-wizard\namegenerator.h
+
