@@ -13,9 +13,11 @@ typedef struct Player{
     int agil;
     int str;
     int intel;
+    int money;
+    int storage[5];
     char name[150];
 }Player;
 
-Player init_game();
-void handleLevel(Player * player);
+Player init_game(); //инициазация игрока
+void handlePlayerLevel(Player * player); //левелинг игрока
 #endif

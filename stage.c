@@ -1,8 +1,9 @@
-#include "stage.h"
-#include "nextLevel.h"
 #include <panel.h>
 #include <string.h>
 #include "nameGenerator.h"
+#include "stage.h"
+#include "nextLevel.h"
+#include "magic.h"
 
 void set_map(){
     int row;
@@ -38,223 +39,6 @@ void set_map(){
     attroff(1);
 }
 
-void heal(Player * player) {
-    delay_output(ANIMATIONDELAY);
-    mvaddch(player->col, player->row + 1, '%');
-    mvaddch(player->col, player->row - 1, '%');
-    mvaddch(player->col - 1, player->row, '%');
-    refresh();
-    delay_output(ANIMATIONDELAY);
-    mvaddch(player->col, player->row + 1, '.');
-    mvaddch(player->col, player->row - 1, '.');
-    mvaddch(player->col - 1, player->row, '.');
-    refresh();
-    mvaddch(player->col, player->row + 1, '/');
-}
-
-void sendMagic(int magicType, Player player, bool deflected){
-    char magic;
-    switch(magicType){
-        case FIREBALL:
-            magic = '*';
-            break;
-        case IGNITION:
-            magic = '%';
-            break;
-        case FROST:
-            magic = '+';
-            break;
-        case HEAL:
-            heal(&player);
-            break;
-    }
-    delay_output(ANIMATIONDELAY);
-    mvaddch(player.col-1, player.row, magic);
-    refresh();
-    delay_output(ANIMATIONDELAY);
-    mvaddch(player.col-2, player.row, magic);
-    mvaddch(player.col-1, player.row, '.');
-    refresh();
-    delay_output(ANIMATIONDELAY);
-    mvaddch(player.col-3, player.row, magic);
-    mvaddch(player.col-2, player.row, '.');
-    refresh();
-    delay_output(ANIMATIONDELAY);
-    mvaddch(player.col-4, player.row, magic);
-    mvaddch(player.col-3, player.row, '.');
-    refresh();
-    delay_output(ANIMATIONDELAY);
-    mvaddch(player.col-5, player.row, magic);
-    mvaddch(player.col-4, player.row, '.');
-    refresh();
-    delay_output(ANIMATIONDELAY);
-    mvaddch(player.col-6, player.row, magic);
-    mvaddch(player.col-5, player.row, '.');
-    refresh();
-    delay_output(ANIMATIONDELAY);
-    mvaddch(player.col-6, player.row, '.');
-    if(deflected) {
-        mvaddch(player.col-5, player.row-1, magic);
-        refresh();
-        delay_output(ANIMATIONDELAY);
-        mvaddch(player.col-4, player.row-2, magic);
-        mvaddch(player.col-5, player.row-1, '.');
-        refresh();
-        delay_output(ANIMATIONDELAY);
-        mvaddch(player.col-4, player.row-2, '.');
-    }
-    refresh();
-}
-
-void enemyTurn(Player * player, Player * enemy) {
-    int magicType;
-    int damage = 0;
-    bool deflected = false;
-    char magic;
-    if(enemy->health == enemy->str*3)
-        magicType = 1 + rand() % 3;
-    else
-        magicType = 1 + rand() % 4;
-    switch(magicType){
-        case FIREBALL:
-            magic = '*';
-            damage = enemy->fire + enemy->intel - player->intel;
-            if(damage < 0) {
-                damage = 0;
-                deflected = true;
-            }
-            else
-                player->health -= damage;
-            break;
-        case IGNITION:
-            magic = '%';
-            damage = enemy->fire + enemy->agil - player->intel;
-            if(damage < 0) {
-                damage = 0;
-                deflected = true;
-            }
-            else
-                player->health -= damage;
-            break;
-        case FROST:
-            magic = '+';
-            damage = enemy->ice + enemy->agil - player->intel;
-            if(damage < 0) {
-                damage = 0;
-                deflected = true;
-            }
-            else
-                player->health -= damage;
-            break;
-        case HEAL:
-            if(enemy->health + enemy->ice < enemy->str * 3)
-                enemy->health += enemy->intel;
-            else
-                enemy->health = enemy->str * 3;
-            break;
-    }
-    if(magicType == HEAL) {
-        delay_output(ANIMATIONDELAY);
-        mvaddch(enemy->col, enemy->row + 1, '%');
-        mvaddch(enemy->col, enemy->row - 1, '%');
-        mvaddch(enemy->col + 1, enemy->row, '%');
-        refresh();
-        delay_output(ANIMATIONDELAY);
-        mvaddch(enemy->col, enemy->row + 1, '.');
-        mvaddch(enemy->col, enemy->row - 1, '.');
-        mvaddch(enemy->col + 1, enemy->row, '.');
-        refresh();
-        mvaddch(enemy->col, enemy->row + 1, '\\');
-    }
-    else{
-        delay_output(ANIMATIONDELAY);
-        mvaddch(enemy->col+1, enemy->row, magic);
-        refresh();
-        delay_output(ANIMATIONDELAY);
-        mvaddch(enemy->col+2, enemy->row, magic);
-        mvaddch(enemy->col+1, enemy->row, '.');
-        refresh();
-        delay_output(ANIMATIONDELAY);
-        mvaddch(enemy->col+3, enemy->row, magic);
-        mvaddch(enemy->col+2, enemy->row, '.');
-        refresh();
-        delay_output(ANIMATIONDELAY);
-        mvaddch(enemy->col+4, enemy->row, magic);
-        mvaddch(enemy->col+3, enemy->row, '.');
-        refresh();
-        delay_output(ANIMATIONDELAY);
-        mvaddch(enemy->col+5, enemy->row, magic);
-        mvaddch(enemy->col+4, enemy->row, '.');
-        refresh();
-        delay_output(ANIMATIONDELAY);
-        mvaddch(enemy->col+6, enemy->row, magic);
-        mvaddch(enemy->col+5, enemy->row, '.');
-        refresh();
-        delay_output(ANIMATIONDELAY);
-        mvaddch(enemy->col+6, enemy->row, '.');
-        refresh();
-        if(deflected) {
-            mvaddch(enemy->col+5, enemy->row+1, magic);
-            refresh();
-            delay_output(ANIMATIONDELAY);
-            mvaddch(enemy->col+4, enemy->row+2, magic);
-            mvaddch(enemy->col+5, enemy->row+1, '.');
-            refresh();
-            delay_output(ANIMATIONDELAY);
-            mvaddch(enemy->col+4, enemy->row+2, '.');
-            refresh();
-        }
-    }
-}
-
-void useMagic(int magicType, Player * player, Player * enemy) {
-    int damage = 0;
-    bool flag = false;
-    switch(magicType) {
-        case FIREBALL:
-            damage = player->fire + player->intel - enemy->intel;
-            if(damage < 0) {
-                damage = 0;
-                flag = true;
-            }
-            else
-                enemy->health -= damage;
-            sendMagic(FIREBALL, *player, flag);
-            break;
-        case IGNITION:
-            damage = player->fire + player->agil - enemy->intel;
-            if(damage < 0) {
-                damage = 0;
-                flag = true;
-            }
-            else
-                enemy->health -= damage;
-            sendMagic(IGNITION, *player, flag);
-            break;
-        case FROST:
-            damage = player->ice + player->agil - enemy->intel;
-            if(damage < 0) {
-                damage = 0;
-                flag = true;
-            }
-            else
-                enemy->health -= damage;
-            sendMagic(FROST, *player, flag);
-            break;
-        case HEAL:
-            heal(player);
-            if(player->health + player->ice < player->str * 3)
-                player->health += player->intel;
-            else
-                player->health = player->str * 3;
-            break;
-        default:
-            break;
-    }
-    if(enemy->health > 0)
-        enemyTurn(player, enemy);
-}
-
 void clearMenu(){
     move(20, 0);
     clrtoeol();
@@ -268,7 +52,6 @@ void printPlayers(Player * player, Player * enemy){
     clrtoeol();
     move(2, 0);
     clrtoeol();
-    //strcpy(name, player->name);
     mvprintw(1, 1, player->name);
     mvprintw(1, 20, "Health - %i", player->health);
     mvprintw(2, 1, enemy->name);
@@ -276,32 +59,47 @@ void printPlayers(Player * player, Player * enemy){
     refresh();
 }
 
-Player set_enemy() {
+Player set_enemy(Player * player) {
     Player enemy;
     int col;
     int row;
     generateName(&(enemy.name));
-    //char name[] = "Zlo";
-    //strcpy(enemy.name, name);
-
     getmaxyx(stdscr, row, col);
-    /*
+    int count = 0;
     enemy.str = 1 + rand()%10;
     enemy.agil = 1 + rand()%10;
     enemy.intel = 1 + rand()%10;
     enemy.fire = 1 + rand()%10;
     enemy.ice = 1 + rand()%10;
     enemy.health = enemy.str*3;
-    */
+    while(enemy.fire + enemy.intel - player->intel <= 0 &&
+          enemy.fire + enemy.agil - player->intel <= 0 &&
+          enemy.ice + enemy.agil - player->intel <= 0 &&
+          count <= 50) {
+        enemy.str = 1 + rand()%10;
+        enemy.agil = 1 + rand()%10;
+        enemy.intel = 1 + rand()%10;
+        enemy.fire = 1 + rand()%10;
+        enemy.ice = 1 + rand()%10;
+        enemy.health = enemy.str*3;
+        count++;
+    }
+    if(count >= 50) {
+        clear();
+        mvprintw(5, 5, "You too mighty! Congrats!");
+        getch();
+        refresh();
+        upgrade(player);
+    }
     //test
-
+    /*
     enemy.str = 10;
-    enemy.agil = 1;
-    enemy.intel = 1;
-    enemy.fire = 1;
-    enemy.ice = 1;
+    enemy.agil = 100;
+    enemy.intel = 100;
+    enemy.fire = 100;
+    enemy.ice = 100;
     enemy.health = enemy.str*3;
-
+    */
     enemy.col = 6;
     enemy.row = 14;
     return enemy;
@@ -391,7 +189,7 @@ void game(Player * player, Player * enemy) {
 
 void stage(Player * player){
     set_map();
-    Player enemy = set_enemy();
+    Player enemy = set_enemy(player);
     init_pair(PLAYER, COLOR_BLACK, BACKGROUND);
     attron(COLOR_PAIR(PLAYER));
     mvaddch(enemy.col, enemy.row, '@');

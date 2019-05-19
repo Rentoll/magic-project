@@ -2,7 +2,7 @@
 #include "nextLevel.h"
 
 int check(int power) {
-    if(power == 10)
+    if(power >= 10)
         return true;
     return false;
 }
@@ -23,6 +23,7 @@ void upgrade(Player * player) {
         mvprintw(5, 5, "YOU COMPLETE THE GAME!!!!!");
         refresh();
         getch();
+        theEnd();
     }
     else {
         mvprintw(0, 0, player->name);
@@ -97,4 +98,9 @@ void upgrade(Player * player) {
         refresh();
         stage(player);
     }
+}
+
+int theEnd() {
+    endwin();
+    exit(0);
 }

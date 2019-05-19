@@ -14,8 +14,8 @@
 //------------------------
 
 int main(){
+    srand(time(NULL));
     Player player = init_game();
     stage(&player);
-    endwin();
     return 0;
 }

@@ -45,13 +45,25 @@
 			<Add directory="C:/Users/Ian/Desktop/roguelike/PDCurses-3.8/wincon" />
 			<Add directory="C:/Users/Ian/Desktop/roguelike/PDCurses-3.8/" />
 		</Linker>
+		<Unit filename="enemyAi.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="enemyAi.h" />
 		<Unit filename="init.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="init.h" />
+		<Unit filename="magic.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="magic.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="nameGenerator.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="nameGenerator.h" />
 		<Unit filename="nextLevel.c">
 			<Option compilerVar="CC" />
 		</Unit>
