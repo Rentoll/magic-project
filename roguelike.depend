@@ -126,3 +126,44 @@
 
 1558017843 d:\github\project wizard\project-wizard\enemyai.h
 
+1558016384 source:d:\github\project wizard\magic project\enemyai.c
+	"init.h"
+	"magic.h"
+
+1558855871 d:\github\project wizard\magic project\init.h
+	<stdbool.h>
+
+1558017843 d:\github\project wizard\magic project\magic.h
+	"init.h"
+
+1558019918 source:d:\github\project wizard\magic project\init.c
+	"init.h"
+	"nameGenerator.h"
+	<curses.h>
+	<string.h>
+	<time.h>
+	<stdbool.h>
+
+1558017843 d:\github\project wizard\magic project\namegenerator.h
+
+1558846483 source:d:\github\project wizard\magic project\magic.c
+	<panel.h>
+	<string.h>
+	"magic.h"
+	"enemyAi.h"
+
+1558017843 d:\github\project wizard\magic project\enemyai.h
+
+1557935086 source:d:\github\project wizard\magic project\namegenerator.c
+	<string.h>
+	<time.h>
+	<stdio.h>
+	"nameGenerator.h"
+
+1558019783 source:d:\github\project wizard\magic project\nextlevel.c
+	<stdbool.h>
+	"nextLevel.h"
+
+1558019821 d:\github\project wizard\magic project\nextlevel.h
+	"init.h"
+

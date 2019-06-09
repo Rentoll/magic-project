@@ -190,7 +190,11 @@ void game(Player * player, Player * enemy) {
 void stage(Player * player){
     set_map();
     Player enemy = set_enemy(player);
-    init_pair(PLAYER, COLOR_BLACK, BACKGROUND);
+    //init_pair(PLAYER, COLOR_BLACK, BACKGROUND);
+    int rand1, rand2;
+    rand1 = rand()%15;
+    rand2 = rand()%15;
+    init_pair(PLAYER, rand1, rand2);
     attron(COLOR_PAIR(PLAYER));
     mvaddch(enemy.col, enemy.row, '@');
     mvaddch(enemy.col, enemy.row+1, '\\');
