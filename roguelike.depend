@@ -130,7 +130,7 @@
 	"init.h"
 	"magic.h"
 
-1558855871 d:\github\project wizard\magic project\init.h
+1560067939 d:\github\project wizard\magic project\init.h
 	<stdbool.h>
 
 1558017843 d:\github\project wizard\magic project\magic.h
@@ -165,5 +165,13 @@
 	"nextLevel.h"
 
 1558019821 d:\github\project wizard\magic project\nextlevel.h
+	"init.h"
+
+1558968331 source:d:\github\project wizard\magic project\main.c
+	<curses.h>
+	"init.h"
+	"stage.h"
+
+1560067792 d:\github\project wizard\magic project\stage.h
 	"init.h"
 

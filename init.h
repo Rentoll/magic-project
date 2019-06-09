@@ -1,7 +1,6 @@
 #ifndef INIT_H
 #define INIT_H
-#define BACKGROUND COLOR_WHITE
-#define PLAYER 1
+#define GAME_PAIR 1
 #include <stdbool.h>
 
 typedef struct Player{
