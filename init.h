@@ -15,6 +15,6 @@ typedef struct Player{
     char name[150];
 }Player;
 
-Player init_game(); //инициазация игрока
-void handlePlayerLevel(Player * player); //левелинг игрока
+Player init_game(); //initialization player
+void handlePlayerLevel(Player * player); //leveling of player
 #endif
