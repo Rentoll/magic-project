@@ -89,28 +89,33 @@ void enemyTurn(Player * player, Player * enemy) {
         mvaddch(enemy->col+6, enemy->row, '.');
         refresh();
         if(deflected) {
-            if(rand()%2 == 0) {
-                mvaddch(enemy->col+5, enemy->row+1, magic);
-                refresh();
-                delay_output(ANIMATIONDELAY);
-                mvaddch(enemy->col+4, enemy->row+2, magic);
-                mvaddch(enemy->col+5, enemy->row+1, '.');
-                refresh();
-                delay_output(ANIMATIONDELAY);
-                mvaddch(enemy->col+4, enemy->row+2, '.');
-                refresh();
-            }
-            else {
-                mvaddch(enemy->col+5, enemy->row-1, magic);
-                refresh();
-                delay_output(ANIMATIONDELAY);
-                mvaddch(enemy->col+4, enemy->row-2, magic);
-                mvaddch(enemy->col+5, enemy->row-1, '.');
-                refresh();
-                delay_output(ANIMATIONDELAY);
-                mvaddch(enemy->col+4, enemy->row-2, '.');
-                refresh();
-            }
+            deflectMagic(player, enemy, magic);
         }
     }
 }
+
+void deflectMagic(Player * player, Player * enemy, int magic) {
+    if(rand()%2 == 0) {
+        mvaddch(enemy->col+5, enemy->row+1, magic);
+        refresh();
+        delay_output(ANIMATIONDELAY);
+        mvaddch(enemy->col+4, enemy->row+2, magic);
+        mvaddch(enemy->col+5, enemy->row+1, '.');
+        refresh();
+        delay_output(ANIMATIONDELAY);
+        mvaddch(enemy->col+4, enemy->row+2, '.');
+        refresh();
+    }
+    else {
+        mvaddch(enemy->col+5, enemy->row-1, magic);
+        refresh();
+        delay_output(ANIMATIONDELAY);
+        mvaddch(enemy->col+4, enemy->row-2, magic);
+        mvaddch(enemy->col+5, enemy->row-1, '.');
+        refresh();
+        delay_output(ANIMATIONDELAY);
+        mvaddch(enemy->col+4, enemy->row-2, '.');
+        refresh();
+    }
+}
+
