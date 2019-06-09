@@ -188,10 +188,17 @@ void game(Player * player, Player * enemy) {
 }
 
 void stage(Player * player){
+    int foreground, background;
     set_map();
     Player enemy = set_enemy(player);
-    init_pair(PLAYER, COLOR_BLACK, BACKGROUND);
-    attron(COLOR_PAIR(PLAYER));
+    foreground = rand()%8;
+    background = rand()%8;
+    while(foreground == background) {
+        foreground = rand()%8;
+        background = rand()%8;
+    }
+    init_pair(GAME_PAIR, foreground, background);
+    attron(COLOR_PAIR(GAME_PAIR));
     mvaddch(enemy.col, enemy.row, '@');
     mvaddch(enemy.col, enemy.row+1, '\\');
     mvaddch(player->col, player->row, '@');
