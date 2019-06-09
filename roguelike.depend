@@ -51,7 +51,7 @@
 	"init.h"
 	<panel.h>
 
-1558019848 source:d:\github\project wizard\project-wizard\init.c
+1558019918 source:d:\github\project wizard\project-wizard\init.c
 	"init.h"
 	"nameGenerator.h"
 	<curses.h>
@@ -59,7 +59,7 @@
 	<time.h>
 	<stdbool.h>
 
-1558017843 d:\github\project wizard\project-wizard\init.h
+1558855871 d:\github\project wizard\project-wizard\init.h
 	<stdbool.h>
 
 1558019642 source:d:\github\project wizard\project-wizard\main.c
@@ -81,7 +81,7 @@
 1558019821 d:\github\project wizard\project-wizard\nextlevel.h
 	"init.h"
 
-1558019538 source:d:\github\project wizard\project-wizard\stage.c
+1558082791 source:d:\github\project wizard\project-wizard\stage.c
 	<panel.h>
 	<string.h>
 	"nameGenerator.h"
@@ -100,7 +100,7 @@
 1558017843 d:\github\project wizard\project-wizard\magic.h
 	"init.h"
 
-1558017843 source:d:\github\project wizard\project-wizard\magic.c
+1558846033 source:d:\github\project wizard\project-wizard\magic.c
 	<panel.h>
 	<string.h>
 	"magic.h"

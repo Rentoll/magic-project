@@ -8,13 +8,11 @@ typedef struct Player{
     int row;
     int col;
     int health;
-    int fire;
-    int ice;
     int agil;
     int str;
     int intel;
-    int money;
-    int storage[5];
+    int fire;
+    int ice;
     char name[150];
 }Player;
 
