@@ -6,8 +6,8 @@
 #define IGNITION 2
 #define FROST   3
 #define HEAL    4
-void heal(Player * player); //healing effect and animation
-void useMagic(int magicType, Player * player, Player * enemy); //applying magic effect
-void sendMagic(int magicType, Player player, bool deflected); //animation of magic
+void heal(Player * player); //анимация и эффект лечения игрока
+void useMagic(int magicType, Player * player, Player * enemy); //применение эффекта использование магии игроком
+void sendMagic(int magicType, Player player, bool deflected); //анимация использованной магии игроком
 
 #endif // MAGIC

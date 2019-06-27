@@ -3,6 +3,6 @@
 
 #define NUMBER 25
 
-void generateName(char *first); //random name from name.txt
+void generateName(char *first); //случайный выбор имени из файла name.txt
 
 #endif
