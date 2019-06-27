@@ -6,10 +6,7 @@ void enemyTurn(Player * player, Player * enemy) {
     int damage = 0;
     bool deflected = false;
     char magic;
-    if(enemy->health == enemy->str*3)
-        magicType = 1 + rand() % 3;
-    else
-        magicType = 1 + rand() % 4;
+    magicType = 1 + rand() % 6;
     switch(magicType){
         case FIREBALL:
             magic = '*';
@@ -31,6 +28,13 @@ void enemyTurn(Player * player, Player * enemy) {
             else
                 player->health -= damage;
             break;
+        case SUPERFIRE:
+            magic = '$';
+            damage = enemy->fire * 2 - player->intel;
+            if(damage < 0) {
+                damage = 0;
+                deflected = true;
+            }
         case FROST:
             magic = '+';
             damage = enemy->ice + enemy->agil - player->intel;
@@ -47,6 +51,13 @@ void enemyTurn(Player * player, Player * enemy) {
             else
                 enemy->health = enemy->str * 3;
             break;
+        case SUPERICE:
+            magic = '|';
+            damage = enemy->ice * 2 - player->intel;
+            if(damage < 0) {
+                damage = 0;
+                deflected = true;
+            }
     }
     if(magicType == HEAL) {
         delay_output(ANIMATIONDELAY);
