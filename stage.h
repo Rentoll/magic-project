@@ -2,10 +2,10 @@
 #define STAGE_H
 #include "init.h"
 #define MAPSIZE 10
-void set_map(); //рисовка дуэльной комнаты
-void stage(Player * player);//функци€ активирующа€ set_map, set_enemy() и game()
-Player set_enemy(); //инициализа€ци€ оппонента
-void game(Player * player, Player * enemy); // дуэльный цикл, включающий меню магии и ее вызов
-void clearMenu(); //очистка меню заклинаний
-void printPlayers(Player * player, Player * enemy); // меню отображающа€ имена и HP магов
+void set_map(); //draw dueling room
+void stage(Player * player);//activating set_map, set_enemy() and game()
+Player set_enemy(); //enemy initialization
+void game(Player * player, Player * enemy); // duel loop, including using magic
+void clearMenu(); //clearing menu of magic
+void printPlayers(Player * player, Player * enemy); // displaying names and HP of mages
 #endif
