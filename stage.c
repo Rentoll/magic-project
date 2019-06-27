@@ -40,14 +40,13 @@ void set_map(){
 }
 
 void clearMenu(){
-    move(20, 0);
-    clrtoeol();
-    move(21, 0);
-    clrtoeol();
+    for(int i = 20; i < 30; i++) {
+        move(i, 0);
+        clrtoeol();
+    }
 }
 
 void printPlayers(Player * player, Player * enemy){
-
     move(1, 0);
     clrtoeol();
     move(2, 0);
@@ -111,8 +110,10 @@ void game(Player * player, Player * enemy) {
     char ice[] = "2. Ice magic";
     char fireBall[] = "1. Fireball";
     char fireIgnition[] = "2. Ignition";
+    char fireFIRE[] = "3. Super Fire Magic";
     char iceFrost[] = "1. Frost him";
     char iceHeal[] = "2. Heal";
+    char iceICE[] = "3. Super Ice magic";
     mvprintw(20, 0, fire);
     mvprintw(21, 0, ice);
     refresh();
@@ -144,6 +145,7 @@ void game(Player * player, Player * enemy) {
                 clearMenu();
                 mvprintw(20, 0, fireBall);
                 mvprintw(21, 0, fireIgnition);
+                mvprintw(22, 0, fireFIRE);
                 if(ch == 'b')
                     flag = 1;
                 ch = getch();
@@ -156,6 +158,10 @@ void game(Player * player, Player * enemy) {
                         useMagic(IGNITION, player, enemy);
                         flag = 1;
                         break;
+                    case '3':
+                        useMagic(SUPERFIRE, player, enemy);
+                        flag = 1;
+                        break;
                     default:
                         break;
                 }
@@ -165,6 +171,7 @@ void game(Player * player, Player * enemy) {
                 clearMenu();
                 mvprintw(20, 0, iceFrost);
                 mvprintw(21, 0, iceHeal);
+                mvprintw(22, 0, iceICE);
                 if(ch == 'b')
                     flag = 1;
                 ch = getch();
@@ -175,6 +182,10 @@ void game(Player * player, Player * enemy) {
                         break;
                     case '2':
                         useMagic(HEAL, player, enemy);
+                        flag = 1;
+                        break;
+                    case '3':
+                        useMagic(SUPERICE, player, enemy);
                         flag = 1;
                         break;
                     default:

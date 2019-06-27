@@ -31,6 +31,7 @@ void useMagic(int magicType, Player * player, Player * enemy) {
                 enemy->health -= damage;
             sendMagic(FIREBALL, *player, flag);
             break;
+
         case IGNITION:
             damage = player->fire + player->agil - enemy->intel;
             if(damage < 0) {
@@ -41,6 +42,18 @@ void useMagic(int magicType, Player * player, Player * enemy) {
                 enemy->health -= damage;
             sendMagic(IGNITION, *player, flag);
             break;
+
+        case SUPERFIRE:
+            damage = player->fire * 2 - enemy->intel;
+            if(damage < 0) {
+                damage = 0;
+                flag = true;
+            }
+            else
+                enemy->health -= damage;
+            sendMagic(SUPERFIRE, *player, flag);
+            break;
+
         case FROST:
             damage = player->ice + player->agil - enemy->intel;
             if(damage < 0) {
@@ -51,6 +64,7 @@ void useMagic(int magicType, Player * player, Player * enemy) {
                 enemy->health -= damage;
             sendMagic(FROST, *player, flag);
             break;
+
         case HEAL:
             heal(player);
             if(player->health + player->ice < player->str * 3)
@@ -58,6 +72,18 @@ void useMagic(int magicType, Player * player, Player * enemy) {
             else
                 player->health = player->str * 3;
             break;
+
+        case SUPERICE:
+            damage = player->ice * 2 - enemy->intel;
+            if(damage < 0) {
+                damage = 0;
+                flag = true;
+            }
+            else
+                enemy->health -= damage;
+            sendMagic(SUPERICE, *player, flag);
+            break;
+
         default:
             break;
     }
@@ -79,6 +105,12 @@ void sendMagic(int magicType, Player player, bool deflected){
             break;
         case HEAL:
             heal(&player);
+            break;
+        case SUPERFIRE:
+            magic = '$';
+            break;
+        case SUPERICE:
+            magic = '|';
             break;
     }
     delay_output(ANIMATIONDELAY);
