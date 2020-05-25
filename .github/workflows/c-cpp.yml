@@ -16,8 +16,11 @@ jobs:
     - name: Build image
       run: docker build -t docker-c .
     - name: push to DockerHub
-      run:  docker login --username ${{ secrets.DOCKER_USERNAME }} --password=${{ secrets.DOCKER_PASSWORD }}
-            docker push ${{secrets.DOCKER_USERNAME}}/magic
+      uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        name: myDocker/repository
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
    
   codestyle_check:
    runs-on: ubuntu-latest
