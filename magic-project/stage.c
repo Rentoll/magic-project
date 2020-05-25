@@ -182,8 +182,13 @@ void game(Player * player, Player * enemy) {
                 }
                 break;
         }
-        if(ch == 'q')
+        if(ch == 'q') {
+	    clear();
+	    refresh();
+	    echo();
+            curs_set(1);
             break;
+	}
     }
 }
 
