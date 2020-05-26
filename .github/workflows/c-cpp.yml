@@ -18,7 +18,7 @@ jobs:
     - name: Build the tagged Docker image
       run: docker build . --tag rentol/magic:latest
     - name: Push the tagged Docker image
-      run: docker push rentol/magic:${{steps.vars.outputs.tag}}
+      run: docker push rentol/magic:latest
     - name: Build the latest Docker image
       run: docker build . --file Dockerfile --tag rentol/magic:latest
     - name: Push the latest Docker image
