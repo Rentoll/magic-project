@@ -1,0 +1,12 @@
+FROM gcc:latest as build 
+
+WORKDIR /magic-project
+
+RUN apt-get update && apt-get install -y libboost-dev libboost-program-options-dev libgtest-dev cmake make libncurses5-dev && cmake -DCMAKE_BUILD_TYPE=Release /usr/src/gtest && cmake --build . && mv lib*.a /usr/lib
+
+COPY . /usr/src/docker
+
+WORKDIR /usr/src/docker/magic-project/test
+RUN cmake CMakeLists.txt
+RUN make
+RUN ./magic_test

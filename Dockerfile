@@ -4,13 +4,13 @@ FROM gcc:latest as build
 
 WORKDIR /magic-project
 
-RUN apt-get update && apt-get install -y libboost-dev libboost-program-options-dev libgtest-dev cmake make libncurses5-dev && cmake -DCMAKE_BUILD_TYPE=Release /usr/src/gtest && cmake --build . && mv lib*.a /usr/lib
+RUN apt-get update && apt-get install -y libboost-dev libboost-program-options-dev cmake make libncurses5-dev 
 
 COPY . /usr/src/docker
-
 WORKDIR /usr/src/docker/magic-project
 
-RUN gcc -o magic main.c enemyAi.c init.c magic.c nameGenerator.c nextLevel.c stage.c -lncurses
+RUN cmake CMakeLists.txt
+RUN make
 
 #-------------------------------
 
