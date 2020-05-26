@@ -23,7 +23,8 @@ jobs:
       run: docker build . --file Dockerfile --tag rentol/magic:latest
     - name: Push the latest Docker image
       run: docker push rentol/magic:latest  
-   
+    - name: Test 
+      run: docker build . --file Dockerfile.test --tag rentol/magic:test
   codestyle_check:
    runs-on: ubuntu-latest
    
