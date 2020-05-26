@@ -2,9 +2,9 @@ name: C/C++ CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, feature/github_workflow ]
   pull_request:
-    branches: [ master ]
+    branches: [ master, feature/github_workflow ]
 
 jobs:
   build:
