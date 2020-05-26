@@ -36,5 +36,5 @@ jobs:
      - name: get install
        run: sudo apt-get install -y cppcheck
      - name: check
-       run: cppcheck cppcheck -q --enable=all ./magic-project/main.c
+       run: cppcheck cppcheck -q --enable=all magic-project
 
